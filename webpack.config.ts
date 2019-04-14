@@ -1,10 +1,13 @@
 import path from 'path';
+import webpack from 'webpack';
 
 
 module.exports = {
   mode: 'development',
   entry: [
-    './src/index.ts',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    './src/index.tsx',
   ],
   module: {
     rules: [{
@@ -15,6 +18,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -22,6 +28,11 @@ module.exports = {
     filename: 'bundle.js',
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: path.join(__dirname, 'dist'),
+    hot: true,
+    inline: true,
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 };
