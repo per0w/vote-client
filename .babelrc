@@ -1,8 +1,33 @@
 {
-    "presets": ["@babel/react", "@babel/typescript", ["@babel/env", { "modules": false, "targets": { "browsers": "last 2 versions" } }]],
-    "plugins": ["react-hot-loader/babel",
-        ["module-resolver", {
-            "root": ["./src"],
-          }]
-    ]
+    "presets": [
+        "@babel/react",
+        "@babel/typescript",
+        [
+            "@babel/env",
+            {
+                "modules": false,
+                "targets": {
+                    "browsers": "last 2 versions",
+                    "node": "current"
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        "react-hot-loader/babel",
+        "@babel/plugin-syntax-dynamic-import",
+        [
+            "module-resolver",
+            {
+                "root": [
+                    "./src"
+                ],
+            }
+        ]
+    ],
+    "env": {
+        "test": {
+          "presets": ["@babel/react", "@babel/typescript", "@babel/env"]
+        }
+      }
 }

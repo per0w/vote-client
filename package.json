@@ -7,10 +7,12 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --progress --colors",
-    "test": "jest"
+    "test": "export NODE_ENV=test && jest -i --config=./jest.config.json",
+    "test:cache": "export NODE_ENV=test && jest --clearCache && jest -i --config=./jest.config.json"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
@@ -25,6 +27,7 @@
     "@types/webpack-dev-server": "^3.1.5",
     "@typescript-eslint/eslint-plugin": "^1.6.0",
     "@typescript-eslint/parser": "^1.6.0",
+    "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-module-resolver": "^3.2.0",
     "enzyme": "^3.9.0",
@@ -37,7 +40,6 @@
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.7.1",
     "react-hot-loader": "^4.8.3",
-    "ts-jest": "^24.0.2",
     "ts-node": "^8.0.3",
     "typescript": "^3.4.3",
     "webpack": "^4.30.0",
