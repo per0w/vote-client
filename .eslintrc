@@ -1,0 +1,72 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "airbnb"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "react"
+    ],
+    "settings": {
+      "import/resolver": {
+        "node": {"extensions": [".js", ".jsx", ".ts", ".tsx"]},
+        "babel-module": {}
+      }
+    },
+    "overrides": [
+      {
+        "files": ["src/*/*/*", "src/*/*"],
+        "rules": {
+          "no-restricted-imports": [2, {"patterns": ["../*"]}]
+        }
+      }
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": [0],
+      "@typescript-eslint/explicit-member-accessibility": [0],
+      "@typescript-eslint/indent": [2, 2],
+      "@typescript-eslint/member-delimiter-style": [2, {
+        "multiline": { "delimiter": "comma" },
+        "singleline": { "delimiter": "comma" }
+      }],
+      "@typescript-eslint/no-empty-interface": [0],
+      "@typescript-eslint/no-use-before-define": [0],
+      "@typescript-eslint/no-unused-vars": [0],
+      "arrow-parens": [0],
+      "import/extensions": [
+        ".ts",
+        ".tsx",
+        ".js"
+      ],
+      "import/first": [2, {"absolute-first": 0}],
+      "import/newline-after-import": [2, {"count": 2}],
+      "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
+      "import/no-unresolved": [2, { "ignore": ["@types\/"], "caseSensitive": false }],
+      "import/order": [2, {
+        "groups": [["builtin", "external"], ["internal"], ["index", "sibling", "parent"]],
+        "newlines-between": "always"
+      }],
+      "import/prefer-default-export": [0],
+      "indent": [0],
+      "jsx-quotes": [1, "prefer-single"],
+      "max-len": [2, {
+        "code": 200,
+        "ignorePattern": "import \\{?\\s?.*\\s?\\}? from '.*';"
+      }],
+      "no-undef": [0],
+      "no-unused-vars": [0],
+      "no-unused-expressions": [0],
+      "no-use-before-define": [0],
+      "no-restricted-imports": [2, {"patterns": ["../../*"]}],
+      "object-curly-newline": [2, {"multiline": true, "minProperties": 2, "consistent": true}],
+      "quotes": [1, "single"],
+      "react/jsx-filename-extension": [0],
+      "react/prop-types": [0],
+      "react/no-array-index-key": [0],
+      "react/require-default-props": [0],
+      "react/no-direct-mutation-state": [2],
+      "@typescript-eslint/no-explicit-any":[0]
+    }
+  }
+  
