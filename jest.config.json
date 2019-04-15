@@ -1,9 +1,12 @@
 {
   "roots": [
-    "<rootDir>/src"
+    "<rootDir>/src/"
   ],
   "transform": {
     "^.+\\.[jt]sx?$": "babel-jest"
+  },
+  "moduleNameMapper": {
+    "^components/(.*)$": "<rootDir>/src/components/$1/"
   },
   "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$",
   "moduleFileExtensions": [

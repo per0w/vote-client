@@ -17,9 +17,10 @@ module.exports = {
     }],
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['*', '.ts', '.tsx', '.js'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
+      components: path.resolve(__dirname, 'src/components/'),
     },
   },
   output: {
@@ -31,6 +32,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     hot: true,
     inline: true,
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

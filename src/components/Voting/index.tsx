@@ -1,23 +1,17 @@
-import React, { Fragment } from 'react';
-import { hot } from 'react-hot-loader/root';
+import React from 'react';
+
+import Winner, { WinnerProps } from 'components/Winner';
+import Vote, { VoteProps } from 'components/Vote';
 
 
-interface Props {
-  pair: string[],
-}
+export interface VotingProps extends VoteProps, WinnerProps {}
 
-const Voting = ({ pair }: Props) => {
-  const getPair = () => pair || [];
-
-  return (
-    <div className='voting'>
-      {getPair().map(entry => (
-        <button type='button' key={entry}>
-          <h1>{entry}</h1>
-        </button>
-      ))}
-    </div>
-  );
-};
-
-export default hot(Voting);
+export default ({
+  winner, ...props
+}: VotingProps) => (
+  <div>
+    {winner
+      ? <Winner winner={winner} />
+      : <Vote {...props} />}
+  </div>
+);

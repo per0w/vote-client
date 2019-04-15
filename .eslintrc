@@ -6,17 +6,21 @@
     ],
     "plugins": [
       "@typescript-eslint",
-      "react"
+      "react",
+      "import"
     ],
     "settings": {
       "import/resolver": {
-        "node": {"extensions": [".js", ".jsx", ".ts", ".tsx"]},
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx"],
+          "paths": ["src"] 
+        },
         "babel-module": {}
       }
     },
     "overrides": [
       {
-        "files": ["src/*/*/*", "src/*/*"],
+        "files": ["src/*/*/*", "src/*/*", "src/**"],
         "rules": {
           "no-restricted-imports": [2, {"patterns": ["../*"]}]
         }
@@ -34,11 +38,6 @@
       "@typescript-eslint/no-use-before-define": [0],
       "@typescript-eslint/no-unused-vars": [0],
       "arrow-parens": [0],
-      "import/extensions": [
-        ".ts",
-        ".tsx",
-        ".js"
-      ],
       "import/first": [2, {"absolute-first": 0}],
       "import/newline-after-import": [2, {"count": 2}],
       "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
