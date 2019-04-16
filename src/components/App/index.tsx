@@ -1,7 +1,9 @@
 import React, {
   ReactElement,
 } from 'react';
-import { List } from 'immutable';
+import {
+  List, Map,
+} from 'immutable';
 import {
   Router, Route, Switch,
 } from 'react-router-dom';
@@ -13,16 +15,18 @@ import Voting from 'components/Voting';
 
 const customHistory = createBrowserHistory();
 const pairs = List.of('Bleach', 'Faity Tail');
+const tally = Map({
+  Bleach: 5, 'Faity Tail': 4,
+});
+interface Props {}
 
-interface Props {
-
-}
-
-export default (props: Props) => (
+const App: React.FC<Props> = (props: Props) => (
   <Router history={customHistory}>
     <div className='App'>
       <Route path='/' exact render={() => <Voting pair={pairs} />} />
-      <Route path='/results' component={Results} />
+      <Route path='/results' render={() => <Results pair={pairs} tally={tally} />} />
     </div>
   </Router>
 );
+
+export default App;
