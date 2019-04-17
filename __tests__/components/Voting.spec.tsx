@@ -27,6 +27,7 @@ describe('Voting', () => {
     firstButton.simulate('click');
     expect(votedWith).toEqual('Bleach');
   });
+
   it('добавляет label к записи, за которую проголосовали', () => {
     const component = mount(
       <Voting
@@ -38,6 +39,7 @@ describe('Voting', () => {
     const [firstButton, ...others] = buttons.getElements().map(el => shallow(el).find('div.label'));
     expect(firstButton.text()).toContain('Voted');
   });
+
   it('отрисовывает только победителя', () => {
     const component = mount(
       <Voting winner='Fairy Tail' />,
@@ -48,22 +50,5 @@ describe('Voting', () => {
     const winner = component.find('div.winner');
     expect(winner).toBeTruthy();
     expect(winner.text()).toContain('Fairy Tail');
-  });
-  it('Рендерится как чистый компонент', () => {
-    const pair = List.of('Bleach', 'Fairy Tail');
-    let component = mount(
-      <div>
-        <Voting pair={pair} />
-      </div>,
-    );
-    let button = component.find('button').first();
-    let firstButton = button;
-    expect(firstButton.text()).toEqual('Bleach');
-
-    const newPair = pair.set(0, 'One Piece');
-    component = component.setProps({ pair: newPair });
-    button = component.find('button').first();
-    firstButton = button;
-    expect(firstButton.text()).toEqual('Bleach');
   });
 });
