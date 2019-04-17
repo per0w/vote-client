@@ -1,6 +1,4 @@
-import React, {
-  ReactElement,
-} from 'react';
+import React from 'react';
 import {
   List, Map,
 } from 'immutable';
@@ -18,9 +16,9 @@ const pairs = List.of('Bleach', 'Faity Tail');
 const tally = Map({
   Bleach: 5, 'Faity Tail': 4,
 });
-interface Props {}
+export interface AppProps {}
 
-const App: React.FC<Props> = (props: Props) => (
+const App: React.FC<AppProps> = (props) => (
   <Router history={customHistory}>
     <div className='App'>
       <Route path='/' exact render={() => <Voting pair={pairs} />} />
