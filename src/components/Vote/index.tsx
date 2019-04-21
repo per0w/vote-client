@@ -10,29 +10,42 @@ export interface VoteProps {
   hasVoted?: string,
 }
 
-const Voting = ({
-  pair, vote, hasVoted,
-}: VoteProps) => {
-  const getPair = () => pair || List();
-  const isDisabled = () => !!hasVoted;
-  const hasVotedFor = (entry: string) => hasVoted === entry;
 
-  return (
-    <div className='voting'>
-      {getPair().map(entry => (
-        <button
-          type='button'
-          key={entry}
-          disabled={isDisabled()}
-          onClick={() => vote && vote(entry)}
-        >
-          <h1>{entry}</h1>
+export default class Voting extends React.PureComponent<VoteProps> {
+  getPair = () => {
+    const { pair } = this.props;
+    return pair || List();
+  };
 
-          {hasVotedFor(entry) && <div className='label'>Voted</div>}
-        </button>
-      ))}
-    </div>
-  );
-};
+  isDisabled = () => {
+    const { hasVoted } = this.props;
+    return !!hasVoted;
+  };
 
-export default Voting;
+  hasVotedFor = (entry: string) => {
+    const { hasVoted } = this.props;
+    return hasVoted === entry;
+  };
+
+  render() {
+    const {
+      vote,
+    } = this.props;
+    return (
+      <div className='voting'>
+        {this.getPair().map(entry => (
+          <button
+            type='button'
+            key={entry}
+            disabled={this.isDisabled()}
+            onClick={() => vote && vote(entry)}
+          >
+            <h1>{entry}</h1>
+
+            {this.hasVotedFor(entry) && <div className='label'>Voted</div>}
+          </button>
+        ))}
+      </div>
+    );
+  }
+}

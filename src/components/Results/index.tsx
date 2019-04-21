@@ -2,9 +2,11 @@ import React, { Fragment } from 'react';
 import {
   List,
 } from 'immutable';
+import { connect } from 'react-redux';
 
 import Winner, { WinnerProps } from 'components/Winner';
 import Tally, { TallyProps } from 'components/Tally';
+import { State } from 'reducers/types';
 
 
 export interface ResultProps extends TallyProps, WinnerProps {
@@ -12,7 +14,7 @@ export interface ResultProps extends TallyProps, WinnerProps {
   next?: () => void,
 }
 
-export default class MyComponent extends React.PureComponent<ResultProps> {
+export default class Results extends React.PureComponent<ResultProps> {
   render() {
     const {
       next,
@@ -42,3 +44,11 @@ export default class MyComponent extends React.PureComponent<ResultProps> {
     );
   }
 }
+
+const mapStateToProps = (state: State) => ({
+  pair: state.getIn(['vote', 'pair']),
+  tally: state.getIn(['vote', 'tally']),
+  winner: state.get('winner'),
+});
+
+export const ResultsContainer = connect(mapStateToProps)(Results);

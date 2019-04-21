@@ -5,9 +5,8 @@
   "transform": {
     "^.+\\.[jt]sx?$": "babel-jest"
   },
-  "moduleNameMapper": {
-    "^components/(.*)$": "<rootDir>/src/components/$1/"
-  },
+
+  "moduleDirectories": ["node_modules", "src"],
   "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$",
   "moduleFileExtensions": [
     "ts",
