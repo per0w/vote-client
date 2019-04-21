@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { fromJS } from 'immutable';
 import io from 'socket.io-client';
 
 import App from 'components/App';

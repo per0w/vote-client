@@ -1,9 +1,6 @@
 import React from 'react';
 import {
-  List, Map,
-} from 'immutable';
-import {
-  Router, Route, Switch,
+  Router, Route,
 } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 

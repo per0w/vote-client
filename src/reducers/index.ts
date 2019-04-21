@@ -1,5 +1,5 @@
 import {
-  Map, List,
+  Map,
 } from 'immutable';
 
 import {
