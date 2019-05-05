@@ -12,5 +12,10 @@ export interface State extends Map<string, any>{
 
 export interface Action {
   type: string,
-  state: State,
+  state?: State,
+  connected?: boolean,
+  meta?: {
+    remote: boolean,
+  },
+  entry?: string,
 }

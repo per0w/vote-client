@@ -22,6 +22,8 @@ module.exports = {
       'react-dom': '@hot-loader/react-dom',
       components: path.resolve(__dirname, 'src/components/'),
       reducers: path.resolve(__dirname, 'src/reducers/'),
+      actions: path.resolve(__dirname, 'src/actions/'),
+      middleware: path.resolve(__dirname, 'src/middleware/'),
     },
   },
   output: {

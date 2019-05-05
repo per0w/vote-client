@@ -17,17 +17,14 @@ export default class Tally extends React.PureComponent<TallyProps> {
 
   getVotes = (entry: string) => {
     const { tally } = this.props;
-    if (tally && tally.has(entry)) {
-      return tally.get(entry);
+    const immutableTally = Map(tally);
+    if (tally && immutableTally.has(entry)) {
+      return immutableTally.get(entry);
     }
     return 0;
   };
 
   render() {
-    const {
-      tally,
-      pair,
-    } = this.props;
     return (
       <div className='tally'>
         {this.getPair().map(entry => (
